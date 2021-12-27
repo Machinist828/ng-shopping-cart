@@ -1,0 +1,81 @@
+<div class="checkout-content">
+  <div class="checkout-cols">
+    <div class="checkout-col1">
+      <mat-vertical-stepper [linear]="true" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Fill out your details</ng-template>
+            <mat-form-field appearance="fill">
+              <input matInput placeholder="Full name" formControlName="name" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <input matInput placeholder="Email" formControlName="email" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <input matInput placeholder="Billing Address" formControlName="billingAddress" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperNext>Continue to shipping</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Shipping To:</ng-template>
+            <mat-form-field appearance="fill">
+              <input matInput formControlName="shippingAddress" placeholder="Shipping Address"
+                     required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Continue to Payment</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="onPayClick()">Pay now</button>
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
+    </div>
+    <div class="checkout-col2">
+      <div class="cart-summary">
+        <div class="cart-summary-content">
+          <div class="cart-summary-header">
+            <h1> Order summary </h1>
+
+          </div>
+          <div class="cart-summary-items">
+            <ul class="cart-summary-list">
+              <li *ngFor="let item of items" class="cart-summary-item">
+                <span class="cart-sumamry-item-title">{{ item.title }}</span>
+                <span class="cart-sumamry-item-quantity">x{{ item.quantity}}</span>
+                <span class="cart-sumamry-item-price">{{ item.price | currency }}</span>
+              </li>
+            </ul>
+            <hr class="cart-summary__separator">
+            <div class="cart-summary__total">
+              <span>Total</span>
+              <span>{{ totalPrice | currency }}</span>
+            </div>
+          </div>
+        </div>
+        <footer>
+          <div class="payment-methods">
+            <ul class="cart-featured-payment-methods__list">
+              <li class="cart-featured-payment-methods__list-item">
+                <img src="https://img.icons8.com/color/96/000000/mastercard.png" />
+              </li>
+              <li class="cart-featured-payment-methods__list-item">
+                <img src="https://img.icons8.com/color-glass/96/000000/visa.png"/>
+              </li>
+            </ul>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover, a:active{
+  color: lightgray;
+}
+
+.navigation-items{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cart_value {
+  position: absolute;
+  top: 1px;
+  right: 45px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 0px 11px;
+  color: #000;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.cart_icon, .menu_icon {
+  position:relative;
+  font-size:33px;
+  cursor: pointer;
+}
+
+mat-toolbar{
+  border-radius: 3px;
+}
+
+@media(max-width: 959px){
+  mat-toolbar{
+      border-radius: 0px;
+  }
+}

@@ -1,0 +1,19 @@
+<div class="layout-wrapper">
+  <div class="flex-wrapper">
+    <mat-sidenav-container>
+      <mat-sidenav #sidenav role="navigation">
+        <app-sidenav (sidenavClosed)="sidenav.close()"></app-sidenav>
+      </mat-sidenav>>
+      <mat-sidenav [ngClass]="{'cart-sidenav': true}" [position]="'end'" #cartSidenav>
+        <app-cart (cartClosed)="cartSidenav.close()"></app-cart>
+      </mat-sidenav>
+
+      <mat-sidenav-content>
+        <app-header (cartToggled)="cartSidenav.toggle()" (sideNavToggled)="sidenav.toggle()"></app-header>
+        <main>
+          <router-outlet></router-outlet>
+        </main>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+</div>

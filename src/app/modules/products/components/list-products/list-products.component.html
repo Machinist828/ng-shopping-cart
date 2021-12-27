@@ -1,0 +1,30 @@
+<section class="products">
+  <div class="container text-center">
+    <div class="row">
+      <div *ngFor="let product of products" class="box">
+        <div class="product_image">
+          <img [attr.src]="product.imageUrl" [attr.alt]="products.indexOf(product)">
+        </div>
+        <div class="box_content">
+          <h4>{{ product.title }}</h4>
+          <p>In stock: {{ product.stock }}</p>
+          <p>Price: {{ product.price | currency }} </p>
+          <!-- <button [disabled]="isMinusBtnDisabled(product.quantity)" type="button" class="btn">
+            <mat-icon>remove</mat-icon>
+          </button>
+          <span>{{ product.quantity }}</span>
+          <button type="button" class="btn">
+            <mat-icon>add</mat-icon>
+          </button> -->
+        </div>
+        <div class="actions">
+          <button (click)="onAddToCartClicked(product)" [disabled]="product.stock === 0" type="button" class="cart-btn">
+            Add to Cart
+          </button>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>

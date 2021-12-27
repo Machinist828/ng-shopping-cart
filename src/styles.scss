@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+html, body {
+  margin: 0;
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.box_content .material-icons {
+  font-size: 18px !important;
+ }
+
+ .cart-sidenav .cart-drawer {
+   width: 40%;
+ }
+
+
+ button {
+   cursor: pointer;
+ }
+
+ button:disabled {
+  background: #ccc !important;
+  cursor: not-allowed !important;
+}
+

@@ -1,0 +1,80 @@
+<div class="cart-layout">
+  <div class="cart-header">
+    <h1> Cart Summary</h1>
+    <button (click)="onCartCloseClick()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="cart-content">
+    <ng-container *ngIf="items.length > 0">
+      <ul class="cart-item-list cart-scrollbar cart-item-list--no-shadow">
+        <li *ngFor="let item of items" class="cart-item">
+          <div class="cart-item__container">
+            <div class="cart-item__product">
+              <div class="cart-item__header">
+                <figure class="cart-item__media cart-item__media--small">
+                  <img width="100" height="100" [attr.src]="item.imageUrl" class="cart-item__image">
+                </figure>
+                <h2 class="cart-item__title cart__font--xlarge cart__font--secondary cart__font--black"> {{item.title}}</h2>
+                <button (click)="onRemoveItemFromCart(item)" aria-label="Remove item" class="cart-button-icon is-danger">
+                  <mat-icon class="cart__icon">delete</mat-icon>
+                </button>
+              </div>
+              <section class="cart-item__content">
+                <div class="cart-item__body">
+                  <div class="cart-item__divider"></div>
+                  <div class="cart-item__info">
+                    <div class="cart-item-description">
+                      <label class="cart-item-description__label cart-font__tiny">Description</label>
+                      <div>
+                        {{ item.description }}
+                      </div>
+                    </div>
+                    <div class="cart-item-quantity">
+                      <label class="cart-item-quantity__label cart-font__tiny">Quantity</label>
+                      <div class="cart-item-quantity__quantity-price-container">
+                        <div class="cart-item-quantity__quantity cart__font--std">
+                          <button (click)="decrementQuantity(item)" [disabled]="item.quantity === 0" aria-label="Decrement quantity" class="cart-button-icon is-small is-secondary">
+                            <mat-icon class="cart__icon">remove</mat-icon>
+                          </button>
+                          <span class="cart__font--secondary cart__font--regular">{{ item.quantity }}</span>
+                          <button (click)="incrementQuantity(item)" [disabled]="item.quantity === item.stock" aria-label="Increment quantity" class="cart-button-icon is-small is-secondary">
+                            <mat-icon class="cart__icon">add</mat-icon>
+                          </button>
+                        </div>
+                        <div class="cart-item-quantity__total-price cart__font--bold cart__font--secondary"> {{ item.price * item.quantity | currency }} </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="cart-cart__footer">
+        <div class="cart-summary">
+          <div class="cart-summary__total cart__font--bold cart__font--secondary">
+            <span class="cart-summary__title cart__font--xlarge">Total</span>
+            <span class="cart-summary__amount cart__font--xlarge">{{ totalPrice | currency }}</span>
+          </div>
+        </div>
+        <div class="cart_footer--buttons">
+          <button (click)="onCheckoutClick()" type="button" class="cart-button">
+            <div class="cart-button__wrapper">
+              <div class="cart-button__label"> Checkout </div>
+              <div class="cart-button__icon">
+                <mat-icon class="cart__icon">arrow_right</mat-icon>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="items.length === 0">
+      <div class="empty-cart">
+        <h1 class="empty-cart__title cart__font--secondary cart__font--xlarge cart__font--bold"> Your cart is empty. </h1>
+      </div>
+    </ng-container>
+  </div>
+</div>
